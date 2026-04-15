@@ -6,6 +6,7 @@ import cookiesParser from "cookie-parser";
 
 import authRoute from "./routes/auth.route.js";
 import productRoute from "./routes/product.route.js";
+import cartRoute from "./routes/cart.route.js";
 import connectDB from "./lib/db.js";
 
 dotenv.config();
@@ -41,6 +42,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use("/api/auth", authRoute);
 app.use("/api/products", productRoute);
+app.use("/api/cart", cartRoute);
 
 app.listen(PORT, ()=>{
     console.log("server is running on https:/localhost:" + PORT);

@@ -46,7 +46,7 @@ const router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.post("/create-product", createProduct);
+router.post("/create-product", protectedRoute, AdminRoute, createProduct);
 
 /**
  * @swagger
@@ -105,7 +105,7 @@ router.put("/:id", updateProduct);
  *       404:
  *         description: Product not found
  */
-router.delete("/:id", deleteProduct);
+router.delete("/:id", protectedRoute, AdminRoute, deleteProduct);
 
 /**
  * @swagger
@@ -146,6 +146,9 @@ router.get("/", protectedRoute,AdminRoute, getAllProducts);
  */
 router.get("/:id", getProductById);
 router.get("/featured", getFeaturedProducts);
+router.get("/recommendations", getRecommendedProducts);
+router.get("/category/:category", getProductsByCategory);
+router.patch("/:id", protectedRoute, AdminRoute, toggleFeaturedProduct);
 
 
 export default router;
